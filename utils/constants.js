@@ -7,7 +7,7 @@ import {
   XIcon,
 } from '@heroicons/react/solid'
 
-const CONTRACT_ADDRESS = "0x6aC3147d70d2652C4A1fe001aC15838eF2Df42a6"
+const CONTRACT_ADDRESS = "0xeaf5d8Ef99b2bF3F8b500869C6d78bF19999bb22"
 
 const MOODS = [
     { id: 0, name: 'Excited', value: 'excited', icon: FireIcon, iconColor: 'text-white', bgColor: 'bg-red-500' },

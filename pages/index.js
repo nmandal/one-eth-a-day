@@ -13,7 +13,7 @@ export default function Home() {
   const contractAddress = CONTRACT_ADDRESS
   const contractABI = abi.abi;
 
-  const getAllEntries = async () => {
+  const getEntries = async () => {
     const { ethereum } = window;
 
     try {
@@ -117,7 +117,7 @@ export default function Home() {
   useEffect(() => {
     const onLoadPage = async () => {
       await checkIfWalletIsConnected();
-      await getAllEntries();
+      await getEntries();
     }
     
     onLoadPage();

@@ -26,8 +26,6 @@ export default function Example() {
 
   const createEntry = async (e) => {
     e.preventDefault();
-    setCurrentEntry("")
-    setSelected(moods[5]);
     setLoading(true)
     try {
       const { ethereum } = window;
@@ -37,8 +35,8 @@ export default function Example() {
         const signer = provider.getSigner();
         const oneLineContract = new ethers.Contract(contractAddress, contractABI, signer);
         
-        let count = await oneLineContract.getTotalEntries();
-        console.log("Retrieved total entry count...", count.toNumber());
+        // let count = await oneLineContract.getTotalEntries();
+        // console.log("Retrieved total entry count...", count.toNumber());
   
         const entryTxn = await oneLineContract.createEntry(currentEntry, selected.id, { gasLimit: 300000 });
         console.log("Mining...", entryTxn.hash);
@@ -46,8 +44,8 @@ export default function Example() {
         await entryTxn.wait();
         console.log("Mined--", entryTxn.hash);
   
-        count = await oneLineContract.getTotalEntries();
-        console.log("Retrieved total entry count...", count.toNumber());
+        // count = await oneLineContract.getTotalEntries();
+        // console.log("Retrieved total entry count...", count.toNumber());
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -55,6 +53,8 @@ export default function Example() {
     catch (error) {
       console.log(error);
     }
+    setCurrentEntry("")
+    setSelected(moods[5]);
     setLoading(false)
   }
 
@@ -169,7 +169,7 @@ export default function Example() {
                 onClick={createEntry}
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                {loading ? "Loading..." : "Post"}
+                {loading ? "Posting..." : "Post"}
               </button>
             </div>
           </div>
